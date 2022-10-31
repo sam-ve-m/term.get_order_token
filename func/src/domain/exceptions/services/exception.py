@@ -40,9 +40,7 @@ class ErrorOnGetUniqueId(ServiceException):
 
 class ErrorToGenerateOrderToken(ServiceException):
     def __init__(self, *args, **kwargs):
-        self.msg = (
-            "Error trying to generate order token in Harpocrates package"
-        )
+        self.msg = "Error trying to generate order token in Harpocrates package"
         self.status_code = HTTPStatus.INTERNAL_SERVER_ERROR
         self.internal_code = InternalCode.ERROR_IN_HARPOCRATES
         self.success = False

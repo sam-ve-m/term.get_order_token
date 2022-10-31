@@ -1,8 +1,7 @@
 --extra-index-url https://backend:dc222fa6-452f-4253-a2fd-a52e7ba2e7e9@nexus.sigame.com.br/repository/pypi/simple
 asgiref==3.5.2
-boto3==1.21.21
+boto3==1.24.59
 flask==2.2.2
-harpocrates-lionx-com-br==0.1.0
+harpocrates==0.1.0
 heimdall-client==2.3.1
 httpx==0.23.0
-pip-chill==1.0.1

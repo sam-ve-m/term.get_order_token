@@ -3,7 +3,6 @@ from ...validators.term_with_order.validator import TermWithOrder
 
 
 class TokenModel:
-
     def __init__(self, payload: TermWithOrder, unique_id: str):
         self.unique_id = unique_id
 

@@ -5,7 +5,7 @@ from src.domain.exceptions.base.base_exceptions import (
     InternalCode,
 )
 from src.domain.models.response.model import ResponseModel
-from src.services.jwt import JwtService
+from src.services.jwt.service import JwtService
 from src.domain.validators.term_with_order.validator import TermWithOrder
 from src.services.order_token.service import OrderToken
 
@@ -14,13 +14,10 @@ from http import HTTPStatus
 
 # Third party
 from etria_logger import Gladsheim
-from flask import request, Response, Flask
+from flask import request, Response
 from pydantic import ValidationError
 
-app = Flask("__name__")
 
-
-@app.route('/get_order_token', methods=["POST"])
 async def sign_term_and_get_token() -> Response:
     try:
         jwt = request.headers.get("x-thebes-answer")
@@ -69,5 +66,3 @@ async def sign_term_and_get_token() -> Response:
             message="Unexpected error has occurred",
         ).build_http_response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR)
         return response
-
-app.run()
