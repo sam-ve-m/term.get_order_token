@@ -1,4 +1,4 @@
-# Jormungandr -
+# Jormungandr
 from ...enums.types import TermType, QuoteType
 
 

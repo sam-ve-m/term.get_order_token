@@ -1,4 +1,4 @@
-# Term
+# Jormungandr
 from ...domain.exceptions.transports.exception import SignTermStatusCodeNotOk
 
 # Standards

@@ -1,4 +1,4 @@
-# Jormungandr - Suitability
+# Jormungandr
 from ...enums.code import InternalCode
 
 

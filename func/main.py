@@ -18,13 +18,13 @@ from flask import request, Response
 from pydantic import ValidationError
 
 
-async def sign_term_and_get_token() -> Response:
+async def sign_term_and_generate_order_token() -> Response:
     try:
         jwt = request.headers.get("x-thebes-answer")
         raw_payload = request.json
         payload_validated = TermWithOrder(**raw_payload)
         unique_id = await JwtService.decode_jwt_and_get_unique_id(jwt=jwt)
-        new_order_token = await OrderToken.sign_term_and_get_order_token(
+        new_order_token = await OrderToken.sign_term_and_generate_order_token(
             payload_validated=payload_validated, jwt=jwt, unique_id=unique_id
         )
         response = ResponseModel(

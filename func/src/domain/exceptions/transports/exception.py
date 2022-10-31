@@ -1,4 +1,4 @@
-# Term
+# Jormungandr
 from ..base.base_exceptions import TransportException
 from ...enums.code import InternalCode
 

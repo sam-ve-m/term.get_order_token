@@ -1,4 +1,4 @@
-# Jormungandr - Suitability
+# Jormungandr
 from func.src.domain.enums.code import InternalCode
 
 # Standards

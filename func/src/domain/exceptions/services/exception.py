@@ -1,4 +1,4 @@
-# Jormungandr - Onboarding
+# Jormungandr
 from ..base.base_exceptions import ServiceException
 from ...enums.code import InternalCode
 

@@ -1,4 +1,4 @@
-# Term
+# Jormungandr
 from ...domain.validators.term_with_order.validator import TermWithOrder
 from ...domain.models.token.model import TokenModel
 from ...transports.term.transport import TermTransport
@@ -10,7 +10,7 @@ from harpocrates import Harpocrates, HarpocratesStatus
 
 class OrderToken:
     @classmethod
-    async def sign_term_and_get_order_token(
+    async def sign_term_and_generate_order_token(
         cls, payload_validated: TermWithOrder, jwt: str, unique_id: str
     ) -> str:
         token_model = TokenModel(payload=payload_validated, unique_id=unique_id)
