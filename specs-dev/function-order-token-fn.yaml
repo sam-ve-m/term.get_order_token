@@ -1,0 +1,55 @@
+include:
+- ./func/*
+kind: ArchiveUploadSpec
+name: func-GJBV
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: order-token-fn-0d0d474d-fe2f-438b-bbe4-bae8ad1cfcda
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+  environment:
+    name: order-token-env
+    namespace: default
+  source:
+    checksum: {}
+    type: url
+    url: archive://func-GJBV
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2022-10-31T18:37:24Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: order-token-fn
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: newdeploy
+      MaxScale: 3
+      MinScale: 1
+      SpecializationTimeout: 120
+      TargetCPUPercent: 80
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: order-token-env
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    functionName: main.sign_term_and_generate_order_token
+    packageref:
+      name: order-token-fn-0d0d474d-fe2f-438b-bbe4-bae8ad1cfcda
+      namespace: default
+  requestsPerPod: 10000
+  resources: {}

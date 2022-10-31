@@ -1,5 +1,5 @@
 # Jormungandr
-from func.src.domain.exceptions.services.exception import (
+from ...domain.exceptions.services.exception import (
     ErrorOnDecodeJwt,
     ErrorOnGetUniqueId,
 )

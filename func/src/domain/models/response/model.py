@@ -1,5 +1,5 @@
 # Jormungandr
-from func.src.domain.enums.code import InternalCode
+from ...enums.code import InternalCode
 
 # Standards
 from json import dumps
