@@ -11,9 +11,9 @@ from harpocrates import Harpocrates, HarpocratesStatus
 class OrderToken:
     @classmethod
     async def sign_term_and_generate_order_token(
-        cls, payload_validated: TermWithOrder, jwt: str, unique_id: str
+        cls, term_with_order: TermWithOrder, jwt: str, unique_id: str
     ) -> str:
-        token_model = TokenModel(payload=payload_validated, unique_id=unique_id)
+        token_model = TokenModel(term_with_order=term_with_order, unique_id=unique_id)
         body = token_model.build_body_content_to_sign_term()
         await TermTransport.sign_term(jwt=jwt, body=body)
         jwt_content = token_model.build_harpocrates_jwt_content()

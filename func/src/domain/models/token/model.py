@@ -3,11 +3,11 @@ from ...validators.term_with_order.validator import TermWithOrder
 
 
 class TokenModel:
-    def __init__(self, payload: TermWithOrder, unique_id: str):
+    def __init__(self, term_with_order: TermWithOrder, unique_id: str):
         self.unique_id = unique_id
 
-        self.term_type = payload.term_type
-        self.term_with_order = payload.dict()
+        self.term_type = term_with_order.term_type
+        self.term_with_order = term_with_order.dict()
 
     def build_harpocrates_jwt_content(self):
         template = dict()
