@@ -2,27 +2,24 @@ apiVersion: fission.io/v1
 kind: Environment
 metadata:
   creationTimestamp: null
-  name: order-token-env
+  name: term-get-order-tkn-env
   namespace: default
 spec:
-  builder:
-    command: build
-    container:
-      name: ""
-      resources: {}
-    image: nexus.sigame.com.br/fission-builder-3.8:0.0.1
-  imagepullsecret: "nexus-v3"
+  imagepullsecret: nexus-v3
   keeparchive: false
-  poolsize: 3
-  resources: {}
+  poolsize: 2
+  resources:
+    requests:
+      cpu: 128m
+      memory: 128Mi
+    limits:
+      cpu: 256m
+      memory: 256Mi
   runtime:
-    container:
-      name: ""
-      resources: {}
-    image: nexus.sigame.com.br/fission-async:0.1.9
+    image: nexus.sigame.com.br/fission-term-get-order-token:0.1.0-2
     podspec:
       containers:
-        - name: order-token-env
+        - name: term-get-order-tkn-env
           env:
             - name: ROOT_LOG_LEVEL
               value: "INFO"
@@ -31,7 +28,7 @@ spec:
             - name: ASGI_FRAMEWORK
               value: "HYPERCORN"
             - name: JORMUNGANDR_SIGN_TERM_URL
-              value: "http://fission.dev-lionx.com.br/term/sign"
+              value: "http://router.fission.svc.cluster.local/term/sign"
             - name: HEIMDALL_FILE_BUCKET_NAME
               value: "heimdall_rsa"
             - name: HEIMDALL_AWS_ACCESS_KEY_ID
@@ -60,4 +57,5 @@ spec:
               value: "60"
             - name: MNEMOSINE_REDIS_HOST
               value: "redis://jormungandr:oUjqwnmdDSA391dja@172.30.11.235:6379"
+  terminationGracePeriod: 3
   version: 3

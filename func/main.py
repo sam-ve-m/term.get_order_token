@@ -1,13 +1,13 @@
 # Term
-from src.domain.exceptions.base.base_exceptions import (
+from func.src.domain.exceptions.base.base_exceptions import (
     ServiceException,
     TransportException,
     InternalCode,
 )
-from src.domain.models.response.model import ResponseModel
-from src.services.jwt.service import JwtService
-from src.domain.validators.term_with_order.validator import TermWithOrder
-from src.services.order_token.service import OrderToken
+from func.src.domain.models.response.model import ResponseModel
+from func.src.services.jwt.service import JwtService
+from func.src.domain.validators.term_with_order.validator import TermWithOrder
+from func.src.services.order_token.service import OrderToken
 
 # Standards
 from http import HTTPStatus

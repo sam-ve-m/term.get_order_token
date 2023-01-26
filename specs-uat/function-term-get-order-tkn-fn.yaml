@@ -1,0 +1,57 @@
+include:
+- fission.py
+kind: ArchiveUploadSpec
+name: fission-py-UR21
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: term-get-order-tkn-fn-e3d0c4b4-a660-4b7c-bbbb-d0208b693235
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://fission-py-UR21
+  environment:
+    name: term-get-order-tkn-env
+    namespace: default
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2023-01-26T15:25:49Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: term-get-order-tkn-fn
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      SpecializationTimeout: 120
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: term-get-order-tkn-env
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: term-get-order-tkn-fn-e3d0c4b4-a660-4b7c-bbbb-d0208b693235
+      namespace: default
+  requestsPerPod: 10000
+  resources:
+    requests:
+      cpu: 128m
+      memory: 128Mi
+    limits:
+      cpu: 256m
+      memory: 256Mi
