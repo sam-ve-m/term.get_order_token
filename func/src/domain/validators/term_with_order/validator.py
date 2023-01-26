@@ -21,5 +21,5 @@ class FixedIncomeValidator(BaseModel):
 
 
 class TermWithOrder(BaseModel):
-    order: Union[VariableIncomeQuoteType, FixedIncomeValidator]
+    order: Union[VariableIncomeValidator, FixedIncomeValidator]
     term_type: TermType

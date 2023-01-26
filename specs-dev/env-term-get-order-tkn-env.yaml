@@ -16,7 +16,7 @@ spec:
       cpu: 256m
       memory: 256Mi
   runtime:
-    image: nexus.sigame.com.br/fission-term-get-order-token:0.1.0-1
+    image: nexus.sigame.com.br/fission-term-get-order-token:0.1.0-2
     podspec:
       containers:
         - name: term-get-order-tkn-env
@@ -28,7 +28,7 @@ spec:
             - name: ASGI_FRAMEWORK
               value: "HYPERCORN"
             - name: JORMUNGANDR_SIGN_TERM_URL
-              value: "http://fission.dev-lionx.com.br/term/sign"
+              value: "http://router.fission.svc.cluster.local/term/sign"
             - name: HEIMDALL_FILE_BUCKET_NAME
               value: "heimdall_rsa"
             - name: HEIMDALL_AWS_ACCESS_KEY_ID
