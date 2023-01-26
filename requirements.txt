@@ -2,10 +2,9 @@
 asgiref==3.5.2
 boto3==1.21.21
 flask==2.2.2
-harpocrates==0.1.0
+harpocrates==0.2.0
 heimdall-client==2.3.1
 httpx==0.23.0
-
 uvloop==0.17.0
 uvicorn==0.20.0
 asgiref==3.5.2
