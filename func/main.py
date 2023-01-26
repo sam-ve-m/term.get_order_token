@@ -21,11 +21,12 @@ from pydantic import ValidationError
 async def sign_term_and_generate_order_token() -> Response:
     try:
         jwt = request.headers.get("x-thebes-answer")
+        x_device_info = request.headers.get("x-device-info")
         raw_payload = request.json
         term_with_order = TermWithOrder(**raw_payload)
         unique_id = await JwtService.decode_jwt_and_get_unique_id(jwt=jwt)
         new_order_token = await OrderToken.sign_term_and_generate_order_token(
-            term_with_order=term_with_order, jwt=jwt, unique_id=unique_id
+            term_with_order=term_with_order, jwt=jwt, unique_id=unique_id, x_device_info=x_device_info
         )
         response = ResponseModel(
             result=new_order_token,
