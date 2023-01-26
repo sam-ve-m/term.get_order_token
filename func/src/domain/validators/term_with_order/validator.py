@@ -1,17 +1,25 @@
 # Jormungandr
-from ...enums.types import TermType, QuoteType
-
+from ...enums.types import TermType, VariableIncomeQuoteType, FixedIncomeRiskClassification
 
 # Third party
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
+
+# Standards
+from typing import Union
 
 
-class Order(BaseModel):
-    symbol: str
+class VariableIncomeValidator(BaseModel):
+    symbol: constr(min_length=3, to_upper=True)
+    quote_type: VariableIncomeQuoteType
     quantity: int
-    quote_type: QuoteType
+
+
+class FixedIncomeValidator(BaseModel):
+    product_id: int
+    quantity: int
+    risk: FixedIncomeRiskClassification
 
 
 class TermWithOrder(BaseModel):
-    order: Order
+    order: Union[VariableIncomeQuoteType, FixedIncomeValidator]
     term_type: TermType
