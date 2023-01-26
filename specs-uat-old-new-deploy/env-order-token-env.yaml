@@ -55,7 +55,7 @@ spec:
             - name: HARPOCRATES_BUCKET_NAME_KEY
               value: "auth-gateway-keys-dev"
             - name: HARPOCRATES_JWT_FILE_BUCKET_NAME
-              value: "mist_rsa"
+              value: "harpocrates_rsa"
             - name: HARPOCRATES_JWT_TTL
               value: "60"
             - name: MNEMOSINE_REDIS_HOST

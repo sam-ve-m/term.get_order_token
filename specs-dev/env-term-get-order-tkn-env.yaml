@@ -16,7 +16,7 @@ spec:
       cpu: 256m
       memory: 256Mi
   runtime:
-    image: nexus.sigame.com.br/fission-term-get-order-token:0.1.0-2
+    image: nexus.sigame.com.br/fission-term-get-order-token:0.1.0-3
     podspec:
       containers:
         - name: term-get-order-tkn-env
@@ -52,7 +52,7 @@ spec:
             - name: HARPOCRATES_BUCKET_NAME_KEY
               value: "auth-gateway-keys-dev"
             - name: HARPOCRATES_JWT_FILE_BUCKET_NAME
-              value: "mist_rsa"
+              value: "harpocrates_rsa"
             - name: HARPOCRATES_JWT_TTL
               value: "60"
             - name: MNEMOSINE_REDIS_HOST
