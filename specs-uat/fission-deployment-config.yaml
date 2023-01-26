@@ -4,4 +4,4 @@
 apiVersion: fission.io/v1
 kind: DeploymentConfig
 name: term-get-order-token
-uid: 453a3716-4491-4063-9725-42cd34d734c8
+uid: f8810370-4ca3-4dac-9f08-c19d28c17f92

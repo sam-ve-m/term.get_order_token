@@ -1,5 +1,4 @@
-#!/bin/bash
 fission spec init
-fission env create --spec --name order-token-env --image nexus.sigame.com.br/fission-async:0.1.9 --builder nexus.sigame.com.br/fission-builder-3.8:0.0.1
-fission fn create --spec --name order-token-fn --env order-token-env --src "./func/*" --entrypoint main.sign_term_and_generate_order_token --executortype newdeploy --maxscale 3
-fission route create --spec --name order-token-rt --method POST --url /order/generate_token --function order-token-fn
+fission env create --spec --name term-get-order-tkn-env --image nexus.sigame.com.br/fission-term-get-order-token:0.1.0-1 --poolsize 2 --graceperiod 3 --version 3 --imagepullsecret "nexus-v3" --spec
+fission fn create --spec --name term-get-order-tkn-fn --env term-get-order-tkn-env --code fission.py --executortype poolmgr --requestsperpod 10000 --spec
+fission route create --spec --name term-get-order-tkn-rt --method POST --url /order/generate_token --function term-get-order-tkn-fn
